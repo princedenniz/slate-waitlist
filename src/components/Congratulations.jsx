@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { FaTwitter, FaWhatsapp } from "react-icons/fa"; // Icons for social sharing
 
-const WaitlistSuccess = ({ data, onReturn }) => {
+const Congratulation = ({ data, onReturn }) => {
   const [copied, setCopied] = useState(false); // Track if the link is copied
+  console.log(data)
 
   // Function to copy the referral link
   const handleCopyLink = () => {
@@ -14,7 +15,7 @@ const WaitlistSuccess = ({ data, onReturn }) => {
       })
       .catch(() => alert("Failed to copy referral link. Please try again."));
   };
-
+  
   // Social media share URLs
   const twitterShareUrl = `https://twitter.com/intent/tweet?text=Join%20me%20on%20SLATY!%20Here%20is%20my%20referral%20link:%20${encodeURIComponent(
     data.referral_link
@@ -88,4 +89,79 @@ const WaitlistSuccess = ({ data, onReturn }) => {
   );
 };
 
-export default WaitlistSuccess;
+export default Congratulation;
+
+
+
+
+
+// // WaitlistSuccess.js
+// import React, { useState } from "react";
+// import { FaTwitter, FaWhatsapp } from "react-icons/fa";
+// import { copyReferralLink } from "../api/waitService"; // Import API function
+
+// const Congratulation = ({ data, onReturn }) => {
+//   const [copied, setCopied] = useState(false);
+
+//   const handleCopyLink = async () => {
+//     const success = await copyReferralLink(data.referral_link);
+//     if (success) {
+//       setCopied(true);
+//       setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+//     } else {
+//       alert("Failed to copy referral link. Please try again.");
+//     }
+//   };
+
+//   const twitterShareUrl = `https://twitter.com/intent/tweet?text=Join%20me%20on%20SLATY!%20Here%20is%20my%20referral%20link:%20${encodeURIComponent(
+//     data.referral_link
+//   )}`;
+//   const whatsappShareUrl = `https://api.whatsapp.com/send?text=Join%20me%20on%20SLATY!%20Here%20is%20my%20referral%20link:%20${encodeURIComponent(
+//     data.referral_link
+//   )}`;
+
+//   return (
+//     <div className="p-6 rounded-md space-y-4 text-center">
+//       <h1 className="text-xl font-bold">Successfully signed up for SLATY!</h1>
+//       <div className="border p-4 rounded-md">
+//         <p>Referral link:</p>
+//         <span
+//           onClick={handleCopyLink}
+//           className="text-indigo-600 break-all cursor-pointer underline"
+//         >
+//           {data.referral_link}
+//         </span>
+//         {copied && <p className="text-green-500">Copied!</p>}
+//       </div>
+
+//       <div className="border p-4 rounded-md">
+//         <p>Your position:</p>
+//         <p className="text-xl font-bold">{data.priority}</p>
+//       </div>
+
+//       <div className="border p-4 rounded-md">
+//         <p>Total referrals:</p>
+//         <p className="text-xl font-bold">{data.total_referrals}</p>
+//       </div>
+
+//       <div className="flex justify-center gap-4">
+//         <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer">
+//           <FaTwitter size={24} className="text-blue-500" />
+//         </a>
+//         <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer">
+//           <FaWhatsapp size={24} className="text-green-500" />
+//         </a>
+//       </div>
+
+//       <button
+//         onClick={onReturn}
+//         className="bg-indigo-600 hover:bg-indigo-700 text-white rounded px-4 py-2 mt-4"
+//       >
+//         Return to Signup
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default Congratulation;
+

@@ -95,3 +95,55 @@ const Signup = ({ onSubmitSuccess }) => {
 };
 
 export default Signup;
+
+
+
+// // Signup.js
+// import React, { useState } from "react";
+// import { signupUser } from "../api/waitService";  // Import API function
+// import ClipLoader from "react-spinners/ClipLoader";
+
+// const Signup = ({ onSubmitSuccess }) => {
+//   const [email, setEmail] = useState("");
+//   const [error, setError] = useState(null);
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSignup = async () => {
+//     setLoading(true);
+//     setError(null);
+
+//     try {
+//       const data = await signupUser({ email }); // Call API
+//       console.log(data)
+//       onSubmitSuccess(data); // Pass data to parent component
+//     } catch (err) {
+//       setError(err.message); // Handle error
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="p-6">
+//       <h1 className="text-xl font-bold mb-4">Sign up for the Waitlist</h1>
+//       <input
+//         type="email"
+//         placeholder="Enter your email"
+//         value={email}
+//         onChange={(e) => setEmail(e.target.value)}
+//         className="border p-2 rounded w-full mb-4"
+//       />
+//       {error && <p className="text-red-500">{error}</p>}
+//       <button
+//         onClick={handleSignup}
+//         className="bg-indigo-600 hover:bg-indigo-700 text-white rounded px-4 py-2"
+//         disabled={loading}
+//       >
+//         {loading ? <ClipLoader size={20}/> : "Sign Up"}
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
