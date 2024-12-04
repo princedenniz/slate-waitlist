@@ -10,13 +10,13 @@ const App = () => {
 
   return (
     <div className="flex w-full h-full p-6">
-      {/* {!waitlistData ? (
+      {!waitlistData ? (
         <Signup onSubmitSuccess={setWaitlistData} />
       ) : (
         <Congratulation data={waitlistData} onReturn={() => setWaitlistData(null)} />
-      )} */}
+      )}
 
-      <Home/>
+      {/* <Home/> */}
     </div>
   );
 };
